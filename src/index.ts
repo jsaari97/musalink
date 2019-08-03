@@ -39,6 +39,8 @@ export const handler = async (req: Request, res: Response) => {
         .end();
     }
   } catch (e) {
+    // tslint:disable-next-line:no-console
+    console.log(e);
     return res
       .status(400)
       .send()
