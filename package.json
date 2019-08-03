@@ -1,0 +1,32 @@
+{
+  "name": "musalink",
+  "version": "1.0.0",
+  "description": "Convert music streaming link to other service",
+  "main": "index.js",
+  "author": "Jim Saari",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf dist package.zip && tsc -p tsconfig.json && cp package*.json dist && cd dist && zip -r -X ../package.zip * && cd .."
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^4.16.1",
+    "@types/node": "^12.0.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.17.1",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-immutable": "^6.0.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-sonarts": "^1.9.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "query-string": "^6.5.0"
+  }
+}

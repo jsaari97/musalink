@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "allowJs": false,
+    "declaration": false,
+    "declarationMap": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": false,
+    "esModuleInterop": true
+  }
+}
