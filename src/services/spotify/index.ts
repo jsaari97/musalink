@@ -83,7 +83,7 @@ export const buildSearchQuery = (params: SearchParameters): string =>
   Object.entries(params)
     .reduce(
       (acc: string, [key, value]: [string, string]): string =>
-        `${acc}%20${key}:"${value}"`,
+        `${acc} ${key}:"${value}"`,
       ''
     )
     .trim();

@@ -9,6 +9,7 @@ import {
   DeezerTrackExtended
 } from './types';
 import { SpotifyTrackResponse } from '../spotify/types';
+import * as qs from 'query-string';
 
 const API_URL = 'https://api.deezer.com/';
 
@@ -31,7 +32,7 @@ export const buildSearchQuery = (params: SearchParameters): string =>
   Object.entries(params)
     .reduce(
       (acc: string, [key, value]: [string, string]): string =>
-        `${acc}%20${key}:"${value}"`,
+        `${acc} ${key}:"${value}"`,
       ''
     )
     .trim();
@@ -42,7 +43,10 @@ export const search = async <T>(
 ): Promise<T> => {
   try {
     const { data: response } = await axios.get<DeezerSearchResponse<T>>(
-      `${API_URL}search/${type}?q=${buildSearchQuery(params)}`
+      `${API_URL}search/${type}?${qs.stringify({
+        q: buildSearchQuery(params),
+        limit: 1
+      })}`
     );
     return response.total ? response.data[0] : Promise.reject();
   } catch (e) {
