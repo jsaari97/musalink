@@ -6,17 +6,18 @@
   "author": "Jim Saari",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist package.zip && tsc -p tsconfig.json && cp package*.json dist && cd dist && zip -r -X ../package.zip * && cd .."
+    "build": "rm -rf dist package.zip && tsc -p tsconfig.json && cp package*.json dist && cd dist && zip -r -X ../package.zip * && cd ..",
+    "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "@types/dotenv": "^6.1.1",
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^4.16.1",
     "@types/node": "^12.0.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.17.1",
+    "prettier": "^2.0.5",
     "ts-node": "^8.1.0",
-    "tslint": "^5.16.0",
+    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-immutable": "^6.0.0",
     "tslint-plugin-prettier": "^2.0.1",
