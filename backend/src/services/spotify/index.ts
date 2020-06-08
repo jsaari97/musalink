@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from 'config';
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '../../config';
 import {
   SpotifyTrackResponse,
   SpotifySearchResponse,
@@ -8,7 +8,7 @@ import {
 } from './types';
 import { LinkType, SearchParameters, Response } from 'common/types';
 import * as qs from 'query-string';
-import { DeezerTrackExtended } from 'services/deezer/types';
+import { DeezerTrackExtended } from '../deezer/types';
 
 const AUTH_URL = 'https://accounts.spotify.com/api/token';
 const API_URL = 'https://api.spotify.com/v1/';

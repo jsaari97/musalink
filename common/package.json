@@ -1,0 +1,8 @@
+{
+  "name": "musalink-common",
+  "version": "1.0.0",
+  "description": "Musalink Common libs",
+  "main": "index.js",
+  "author": "Jim Saari",
+  "license": "MIT"
+}

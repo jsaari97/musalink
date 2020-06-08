@@ -7,7 +7,7 @@ import * as qs from "query-string";
 import vibrant from "node-vibrant";
 import { animated, useTransition } from "react-spring";
 import Spinner from "react-md-spinner";
-import { Response } from "../../common/types";
+import { Response } from "common/types";
 
 const validateInput = (input: string): boolean =>
   !!input.match(/(open\.spotify|deezer\.com)/);

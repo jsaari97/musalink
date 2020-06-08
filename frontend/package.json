@@ -41,6 +41,7 @@
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/rebass": "^4.0.3",
+    "common": "link:../common",
     "react-scripts": "^3.3.0",
     "typescript": "^3.7.4"
   }
