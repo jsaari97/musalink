@@ -1,8 +1,5 @@
 version: 2.1
 
-attach: &attach
-  at: ~/project
-
 deploy_branches: &deploy_branches
   branches:
     only:
@@ -42,7 +39,8 @@ jobs:
       - checkout:
           path: ~/project
       - attach_workspace:
-          <<: *attach
+          at: ~/project/backend
+      - run: ls
       - run: yarn build
       - run:
           name: Generate package.json
@@ -60,7 +58,8 @@ jobs:
       - checkout:
           path: ~/project
       - attach_workspace:
-          <<: *attach
+          at: ~/project/backend
+      - run: ls
       - run:
           name: Dump Google Cloud Credentials to file
           command: echo ${GCLOUD_SERVICE_KEY} | base64 --decode --ignore-garbage > ~/gcloud-key.json
@@ -104,7 +103,7 @@ jobs:
       - checkout:
           path: ~/project
       - attach_workspace:
-          <<: *attach
+          at: ~/project/frontend
       - run:
           name: Setup CI Git config credentials
           command: |
