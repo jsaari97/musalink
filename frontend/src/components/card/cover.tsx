@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Button, Box, Image } from "rebass";
-import { ReactComponent as PlayIcon } from "../../svg/play.svg";
-import { ReactComponent as PauseIcon } from "../../svg/pause.svg";
+import { ReactComponent as PlayIcon } from "svg/play.svg";
+import { ReactComponent as PauseIcon } from "svg/pause.svg";
 
 interface CardCoverProps {
   image: string;

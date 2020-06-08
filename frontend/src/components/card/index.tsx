@@ -1,12 +1,12 @@
 import * as React from "react";
-import { Result as ResultInterface } from "../../App";
+import { Response } from "../../../../common/types";
 import { Card, Flex, Heading, Box } from "rebass";
 import { MusicLink } from "../MusicLink";
-import { ReactComponent as CloseIcon } from "../../svg/close.svg";
+import { ReactComponent as CloseIcon } from "svg/close.svg";
 import { CardCover } from "./cover";
 
 interface ResultProps {
-  result: ResultInterface | null;
+  result: Response | null;
   onClose: () => void;
 }
 

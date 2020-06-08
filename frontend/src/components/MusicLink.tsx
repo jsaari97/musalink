@@ -1,6 +1,6 @@
 import * as React from "react";
-import { ReactComponent as DeezerIcon } from "../svg/deezer-circle.svg";
-import { ReactComponent as SpotifyIcon } from "../svg/spotify.svg";
+import { ReactComponent as DeezerIcon } from "svg/deezer.svg";
+import { ReactComponent as SpotifyIcon } from "svg/spotify.svg";
 import { Link } from "rebass";
 
 interface MusicLinkProps {
@@ -23,17 +23,30 @@ const iconStyle = {
 export const MusicLink: React.FC<MusicLinkProps> = ({ link }) => {
   const service = determineType(link);
 
-  if (!service) {
+  const ServiceIcon = React.useMemo((): React.ElementType | null => {
+    switch (service) {
+      case "deezer":
+        return DeezerIcon;
+      case "spotify":
+        return SpotifyIcon;
+      default:
+        return null;
+    }
+  }, [service]);
+
+  if (!ServiceIcon) {
     return null;
   }
 
   return (
-    <Link mx={2} href={link} target="_blank" rel="noreferrer noopener">
-      {service === "deezer" ? (
-        <DeezerIcon {...iconStyle} />
-      ) : (
-        <SpotifyIcon {...iconStyle} />
-      )}
+    <Link
+      mx={2}
+      href={link}
+      title={`Listen on ${service}`}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      <ServiceIcon {...iconStyle} />
     </Link>
   );
 };

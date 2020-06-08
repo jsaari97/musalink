@@ -7,16 +7,7 @@ import * as qs from "query-string";
 import vibrant from "node-vibrant";
 import { animated, useTransition } from "react-spring";
 import Spinner from "react-md-spinner";
-
-export interface Result {
-  cover: string;
-  type: "artist" | "album" | "track";
-  artist: string;
-  album: string | null;
-  title: string | null;
-  preview: string | null;
-  urls: string[];
-}
+import { Response } from "../../common/types";
 
 const validateInput = (input: string): boolean =>
   !!input.match(/(open\.spotify|deezer\.com)/);
@@ -34,11 +25,11 @@ const buildGradient = (color1: number[], color2: number[]): string =>
 const URL =
   "https://europe-west1-jsaari-open-source.cloudfunctions.net/musalink?url=";
 
-const fetch = (url: string) => axios.get<Result>(`${URL}${url}`);
+const fetch = (url: string) => axios.get<Response>(`${URL}${url}`);
 
 const App: React.FC = () => {
   const [value, setValue] = React.useState<string>(initialQuery());
-  const [result, setResult] = React.useState<Result | null>(null);
+  const [result, setResult] = React.useState<Response | null>(null);
   const [isValid, setValid] = React.useState<boolean>(validateInput(value));
   const [loading, setLoading] = React.useState<boolean>(false);
   const [buttonColor, setButtonColor] = React.useState<string>("#aaa");
@@ -51,20 +42,20 @@ const App: React.FC = () => {
       position: "absolute",
       transform: "scale(0.9) translate3d(0, 150px, 0)",
       maxWidth: 640,
-      width: "100%"
+      width: "100%",
     },
     enter: {
       opacity: 1,
-      transform: "scale(1) translate3d(0, 0px, 0)"
+      transform: "scale(1) translate3d(0, 0px, 0)",
     },
     leave: {
       opacity: 0,
-      transform: "scale(0.9) translate3d(0, 150px, 0)"
-    }
+      transform: "scale(0.9) translate3d(0, 150px, 0)",
+    },
   });
 
   const onSubmit = React.useCallback(
-    async e => {
+    async (e) => {
       e.preventDefault();
       try {
         setLoading(true);
@@ -97,7 +88,7 @@ const App: React.FC = () => {
       vibrant
         .from(result.cover)
         .getPalette()
-        .then(palette => {
+        .then((palette) => {
           setButtonColor(
             palette.DarkMuted ? palette.DarkMuted.getHex() : "#aaa"
           );
@@ -131,7 +122,7 @@ const App: React.FC = () => {
       height="100vh"
       py={[32, 120, 240]}
       sx={{
-        background: gradient
+        background: gradient,
       }}
     >
       <div style={{ maxWidth: 640, width: "100%" }}>
