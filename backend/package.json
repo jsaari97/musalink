@@ -10,6 +10,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=PRODUCTION tsc -p tsconfig.json",
+    "test": "echo \"No tests available\" && exit 0",
     "build": "rm -rf dist package.zip && tsc -p tsconfig.json && cp package*.json dist && cd dist && zip -r -X ../package.zip * && cd ..",
     "type-check": "tsc --noEmit"
   },

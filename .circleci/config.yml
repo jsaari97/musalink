@@ -1,34 +1,139 @@
 version: 2.1
 
-jobs:
-  build_backend:
+attach: &attach
+  at: ~/project
+
+deploy_branches: &deploy_branches
+  branches:
+    only:
+      - master
+
+executors:
+  backend:
+    docker:
+      - image: circleci/node:10.18.1
     working_directory: ~/project/backend
+  frontend:
     docker:
-      - image: alpine:3.12
-    steps:
-      - checkout:
-          path: ~/project
-      - run:
-          name: The First Step
-          command: |
-            echo 'Hello Backend!'
-            ls
-  build_frontend:
+      - image: circleci/node:12
     working_directory: ~/project/frontend
-    docker:
-      - image: alpine:3.12
+
+jobs:
+  test_backend:
+    executor: backend
     steps:
       - checkout:
           path: ~/project
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run: yarn test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  build_backend:
+    executor: backend
+    steps:
+      - checkout:
+          path: ~/project
+      - attach_workspace:
+          <<: *attach
+      - run: yarn build
       - run:
-          name: The First Step
+          name: Generate package.json
           command: |
-            echo 'Hello Frontend!'
-            ls
+            node -e "console.log(JSON.stringify({ dependencies: require('./package.json').dependencies }))" > dist/package.json
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+  deploy_backend:
+    executor: backend
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout:
+          path: ~/project
+      - attach_workspace:
+          <<: *attach
+      - run:
+          name: Dump Google Cloud Credentials to file
+          command: echo ${GCLOUD_SERVICE_KEY} | base64 --decode --ignore-garbage > ~/gcloud-key.json
+      - run:
+          name: Google Cloud auth
+          command: |
+            gcloud auth activate-service-account --key-file ~/gcloud-key.json
+            gcloud --quiet config set project ${GCLOUD_PROJECT}
+      - run:
+          name: Deploy Cloud Function
+          command: |
+            cd dist
+            gcloud functions deploy musalink \
+              --region ${GCLOUD_REGION} \
+              --entry-point handler \
+              --runtime nodejs10 \
+              --verbosity info \
+              --memory 128MB \
+              --trigger-http \
+              --allow-unauthenticated
+  test_frontend:
+    executor: frontend
+    steps:
+      - checkout:
+          path: ~/project
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run: yarn
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run: yarn test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - node_modules
+  deploy_frontend:
+    executor: frontend
+    steps:
+      - checkout:
+          path: ~/project
+      - attach_workspace:
+          <<: *attach
+      - run:
+          name: Setup CI Git config credentials
+          command: |
+            git config user.email "${CIRCLE_USERNAME}@users.noreply.github.com"
+            git config user.name "${CIRCLE_USERNAME}"
+      - add_ssh_keys:
+          fingerprints:
+            - "b6:aa:05:2d:55:b3:de:d2:fe:74:ef:58:22:86:26:70"
+      - run: yarn deploy
+
 
 workflows:
   version: 2
   build:
     jobs:
-      - build_backend
-      - build_frontend
+      - test_backend
+      - build_backend:
+          requires:
+            - test_backend
+          filters:
+            <<: *deploy_branches
+      - deploy_backend:
+          requires:
+            - build_backend
+          filters:
+            <<: *deploy_branches
+      - test_frontend
+      - deploy_frontend:
+          requires:
+            - test_frontend
+          filters:
+            <<: *deploy_branches
