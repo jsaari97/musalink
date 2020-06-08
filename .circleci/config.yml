@@ -2,22 +2,24 @@ version: 2.1
 
 jobs:
   build_backend:
+    working_directory: ~/project/backend
     docker:
       - image: alpine:3.12
-    working_directory: ~/project/frontend
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
       - run:
           name: The First Step
           command: |
             echo 'Hello Backend!'
             ls
   build_frontend:
+    working_directory: ~/project/frontend
     docker:
       - image: alpine:3.12
-    working_directory: ~/project/frontend
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
       - run:
           name: The First Step
           command: |
