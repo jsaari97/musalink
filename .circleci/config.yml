@@ -11,6 +11,7 @@ jobs:
           name: The First Step
           command: |
             echo 'Hello Backend!'
+            ls
   build_frontend:
     docker:
       - image: alpine:3.12
@@ -21,6 +22,7 @@ jobs:
           name: The First Step
           command: |
             echo 'Hello Frontend!'
+            ls
 
 workflows:
   version: 2

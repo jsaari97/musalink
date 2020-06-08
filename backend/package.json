@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Jim Saari",
   "license": "MIT",
+  "engines": {
+    "node": ">=10.18.1"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=PRODUCTION tsc -p tsconfig.json",
     "build": "rm -rf dist package.zip && tsc -p tsconfig.json && cp package*.json dist && cd dist && zip -r -X ../package.zip * && cd ..",
