@@ -25,7 +25,7 @@ export const Input: React.FC<InputProps> = ({ onChange, value }) => {
 
   const handleFocus = React.useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
-      e.target.focus();
+      e.target.select();
     },
     []
   );
