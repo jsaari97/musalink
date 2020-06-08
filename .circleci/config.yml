@@ -4,7 +4,7 @@ jobs:
   build_backend:
     docker:
       - image: alpine:3.12
-    working_directory: ~/backend
+    working_directory: backend
     steps:
       - checkout
       - run:
@@ -15,7 +15,7 @@ jobs:
   build_frontend:
     docker:
       - image: alpine:3.12
-    working_directory: ~/frontend
+    working_directory: frontend
     steps:
       - checkout
       - run:
