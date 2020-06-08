@@ -19,6 +19,15 @@ export const theme = {
   shadows: {
     small: "0 2px 12px rgba(0, 0, 0, .125)",
     large: "0 0 24px rgba(0, 0, 0, .125)"
+  },
+  buttons: {
+    clear: {
+      bg: 'transparent',
+      m: 0,
+      p: 0,
+      outline: 0,
+      border: 0,
+    }
   }
 };
 

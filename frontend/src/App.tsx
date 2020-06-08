@@ -2,7 +2,7 @@ import * as React from "react";
 import { Input } from "./components/Input";
 import { Flex, Button } from "rebass";
 import axios from "axios";
-import { ResultCard } from "./components/Result";
+import { ResultCard } from "./components/card";
 import * as qs from "query-string";
 import vibrant from "node-vibrant";
 import { animated, useTransition } from "react-spring";

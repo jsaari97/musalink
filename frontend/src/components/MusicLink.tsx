@@ -17,8 +17,8 @@ const determineType = (link: string): "spotify" | "deezer" | null =>
 const iconStyle = {
   height: 64,
   width: 64,
-  fill: '#333',
-}
+  fill: "#333",
+};
 
 export const MusicLink: React.FC<MusicLinkProps> = ({ link }) => {
   const service = determineType(link);
@@ -29,7 +29,11 @@ export const MusicLink: React.FC<MusicLinkProps> = ({ link }) => {
 
   return (
     <Link mx={2} href={link} target="_blank" rel="noreferrer noopener">
-      {service === "deezer" ? <DeezerIcon {...iconStyle} /> : <SpotifyIcon {...iconStyle} />}
+      {service === "deezer" ? (
+        <DeezerIcon {...iconStyle} />
+      ) : (
+        <SpotifyIcon {...iconStyle} />
+      )}
     </Link>
   );
 };
