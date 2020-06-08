@@ -12,6 +12,7 @@ export const theme = {
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
+    heading: "Roboto, system-ui, sans-serif",
     sans: "Roboto, system-ui, sans-serif",
     mono: "Menlo, monospace"
   },
@@ -24,11 +25,8 @@ export const theme = {
 export const GlobalStyle: React.FC = () => (
   <Global
     styles={css`
-      * {
-        font-family: ${theme.fonts.sans};
-      }
-
       body {
+        font-family: ${theme.fonts.sans};
         min-height: 100vh;
         margin: 0;
       }

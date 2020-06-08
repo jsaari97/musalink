@@ -5,7 +5,6 @@ import { MusicLink } from "./MusicLink";
 import { ReactComponent as CloseIcon } from "../svg/close.svg";
 import { ReactComponent as PlayIcon } from "../svg/play.svg";
 import { ReactComponent as PauseIcon } from "../svg/pause.svg";
-import { css } from "@emotion/core";
 
 interface ResultProps {
   result: ResultInterface | null;
@@ -15,7 +14,7 @@ interface ResultProps {
 const controlStyle = {
   height: 80,
   width: 80,
-  fill: "#fff"
+  fill: "#fff",
 };
 
 export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
@@ -38,7 +37,7 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
         boxShadow: "small",
         position: "relative",
         zIndex: 2,
-        minHeight: 320
+        minHeight: 320,
       }}
       mx={2}
       bg="#fff"
@@ -62,25 +61,25 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
             mb={[24, 0]}
           >
             {result.preview && (
-              <div
-                css={css`
-                  position: absolute;
-                  top: 0;
-                  right: 0;
-                  bottom: 0;
-                  left: 0;
-                  margin: auto;
-                  height: 80px;
-                  width: 80px;
-                  pointer-events: none;
-                `}
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  bottom: 0,
+                  left: 0,
+                  margin: "auto",
+                  height: 80,
+                  width: 80,
+                  pointerEvents: "none",
+                }}
               >
                 {playing ? (
                   <PauseIcon {...controlStyle} />
                 ) : (
                   <PlayIcon {...controlStyle} />
                 )}
-              </div>
+              </Box>
             )}
             <Image
               sx={{ objectFit: "cover", borderRadius: 999 }}
@@ -140,7 +139,7 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
               )}
             </Flex>
             <Box mt={4}>
-              {result.urls.map(link => (
+              {result.urls.map((link) => (
                 <MusicLink key={link} link={link} />
               ))}
             </Box>

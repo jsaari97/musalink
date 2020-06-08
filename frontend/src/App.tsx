@@ -130,7 +130,9 @@ const App: React.FC = () => {
       alignItems="center"
       height="100vh"
       py={[32, 120, 240]}
-      bg={gradient}
+      sx={{
+        background: gradient
+      }}
     >
       <div style={{ maxWidth: 640, width: "100%" }}>
         {transitions.map(({ item, props, key }) =>

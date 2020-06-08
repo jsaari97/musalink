@@ -1,7 +1,5 @@
-/** @jsx jsx */
 import * as React from "react";
-import { jsx, css } from "@emotion/core";
-import { Flex } from "rebass";
+import { Flex, Box } from "rebass";
 
 interface InputProps {
   onChange: (value: string) => void;
@@ -11,19 +9,20 @@ interface InputProps {
 export const Input: React.FC<InputProps> = ({ onChange, value }) => {
   return (
     <Flex flex={1} mr={[0, 3]}>
-      <input
-        css={css`
-          flex: 1;
-          border-radius: 3rem;
-          outline: 0;
-          border: 0;
-          font-size: 1.1rem;
-          padding-left: 1.5rem;
-          box-shadow: 0 0 4px rgba(0, 0, 0, 0.125);
-          min-height: 42px;
-        `}
+      <Box
+        as="input"
+        sx={{
+          flex: 1,
+          borderRadius: "3rem",
+          outline: 0,
+          border: 0,
+          fontSize: 2,
+          pl: 4,
+          boxShadow: "0 0 4px rgba(0, 0, 0, 0.125)",
+          minHeight: 42,
+        }}
         value={value}
-        onChange={({ target }) => {
+        onChange={({ target }: any) => {
           const filtered = target.value.match(/.+?(\?)/);
           onChange(
             filtered
@@ -32,7 +31,7 @@ export const Input: React.FC<InputProps> = ({ onChange, value }) => {
           );
         }}
         placeholder="Paste track, album or artist link"
-        onFocus={e => {
+        onFocus={(e: any) => {
           e.target.select();
         }}
       />
