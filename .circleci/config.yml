@@ -1,0 +1,30 @@
+version: 2.1
+
+jobs:
+  build_backend:
+    docker:
+      - image: alpine:3.12
+    working_directory: ~/backend
+    steps:
+      - checkout
+      - run:
+          name: The First Step
+          command: |
+            echo 'Hello Backend!'
+  build_frontend:
+    docker:
+      - image: alpine:3.12
+    working_directory: ~/frontend
+    steps:
+      - checkout
+      - run:
+          name: The First Step
+          command: |
+            echo 'Hello Frontend!'
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_backend
+      - build_frontend
