@@ -35,10 +35,15 @@ export const GlobalStyle: React.FC = () => (
   <Global
     styles={css`
       body {
-        font-family: ${theme.fonts.sans};
         min-height: 100vh;
         margin: 0;
       }
+
+      html,
+      input {
+        font-family: ${theme.fonts.sans};
+      }
+
 
       pre {
         font-family: ${theme.fonts.mono};
