@@ -1,10 +1,5 @@
-import { config } from 'dotenv';
+import * as dotenv from 'dotenv';
 
-// tslint:disable:no-expression-statement
-config();
+dotenv.config();
 
-export const {
-  SPOTIFY_CLIENT_ID,
-  SPOTIFY_CLIENT_SECRET,
-  BUCKET_NAME
-} = process.env;
+export const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } = process.env;

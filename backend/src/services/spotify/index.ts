@@ -1,19 +1,18 @@
 import axios from 'axios';
-import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '../../config';
+import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from 'config';
 import {
   SpotifyTrackResponse,
   SpotifySearchResponse,
   SpotifyArtistResponse,
-  SpotifyAlbumResponse
+  SpotifyAlbumResponse,
 } from './types';
-import { LinkType, SearchParameters, MusaResponse } from '../../types';
+import { LinkType, SearchParameters, Response } from 'common/types';
 import * as qs from 'query-string';
-import { DeezerTrackExtended } from '../deezer/types';
+import { DeezerTrackExtended } from 'services/deezer/types';
 
 const AUTH_URL = 'https://accounts.spotify.com/api/token';
 const API_URL = 'https://api.spotify.com/v1/';
 
-// tslint:disable:no-let
 let authToken: string | null = null;
 let timestamp: number = 0;
 
@@ -26,7 +25,6 @@ interface SpotifyAuthResponse {
 
 export const authorize = async (): Promise<string | undefined> => {
   try {
-    // tslint:disable-next-line:no-if-statement
     if (authToken && timestamp > Math.floor(new Date().getTime() / 1000)) {
       return Promise.resolve(authToken);
     }
@@ -40,12 +38,11 @@ export const authorize = async (): Promise<string | undefined> => {
       {
         headers: {
           Authorization: `Basic ${encodedToken}`,
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
       }
     );
 
-    // tslint:disable:no-expression-statement
     authToken = `Bearer ${data.access_token}`;
 
     const tempDate = new Date();
@@ -58,20 +55,14 @@ export const authorize = async (): Promise<string | undefined> => {
   }
 };
 
-export const fetch = async (
-  id: string,
-  type: LinkType
-): Promise<SpotifyTrackResponse> => {
+export const fetch = async (id: string, type: LinkType): Promise<SpotifyTrackResponse> => {
   try {
     const token = await authorize();
-    const { data } = await axios.get<SpotifyTrackResponse>(
-      `${API_URL}${type}s/${id}`,
-      {
-        headers: {
-          Authorization: token
-        }
-      }
-    );
+    const { data } = await axios.get<SpotifyTrackResponse>(`${API_URL}${type}s/${id}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
 
     return Promise.resolve(data);
   } catch (e) {
@@ -81,37 +72,30 @@ export const fetch = async (
 
 export const buildSearchQuery = (params: SearchParameters): string =>
   Object.entries(params)
-    .reduce(
-      (acc: string, [key, value]: [string, string]): string =>
-        `${acc} ${key}:"${value}"`,
-      ''
-    )
+    .reduce((acc: string, [key, value]: [string, string]): string => `${acc} ${key}:"${value}"`, '')
     .trim();
 
-export const search = async <T>(
-  params: SearchParameters,
-  type: LinkType
-): Promise<T> => {
+export const search = async <T>(params: SearchParameters, type: LinkType): Promise<T> => {
   try {
     const token = await authorize();
     const { data: response } = await axios.get<SpotifySearchResponse<T>>(
       `${API_URL}search?${qs.stringify({
         q: buildSearchQuery(params),
         type,
-        limit: 1
+        limit: 1,
       })}`,
       {
         headers: {
-          Authorization: token
-        }
+          Authorization: token,
+        },
       }
     );
 
-    return type === LinkType.track
+    return type === 'track'
       ? response.tracks.items[0]
-      : type === LinkType.artist
+      : type === 'artist'
       ? response.artists.items[0]
-      : type === LinkType.album
+      : type === 'album'
       ? response.albums.items[0]
       : Promise.reject();
   } catch (e) {
@@ -120,23 +104,20 @@ export const search = async <T>(
 };
 
 export const searchTrack = (params: SearchParameters) =>
-  search<SpotifyTrackResponse>(params, LinkType.track);
+  search<SpotifyTrackResponse>(params, 'track');
 
 export const searchArtist = (params: SearchParameters) =>
-  search<SpotifyArtistResponse>(params, LinkType.artist);
+  search<SpotifyArtistResponse>(params, 'artist');
 
 export const searchAlbum = (params: SearchParameters) =>
-  search<SpotifyAlbumResponse>(params, LinkType.album);
+  search<SpotifyAlbumResponse>(params, 'album');
 
-export const getUrl = async (
-  data: DeezerTrackExtended,
-  type: LinkType
-): Promise<MusaResponse> => {
-  if (type === LinkType.track) {
+export const getUrl = async (data: DeezerTrackExtended, type: LinkType): Promise<Response> => {
+  if (type === 'track') {
     const res = await searchTrack({
       artist: data.artist.name,
       track: data.title,
-      album: data.album.title
+      album: data.album.title,
     });
     return {
       urls: [data.link, res.external_urls.spotify],
@@ -145,11 +126,11 @@ export const getUrl = async (
       title: data.title,
       type,
       album: data.album.title,
-      preview: data.preview
+      preview: data.preview,
     };
-  } else if (type === LinkType.artist) {
+  } else if (type === 'artist') {
     const res = await searchArtist({
-      artist: data.name
+      artist: data.name,
     });
     return {
       urls: [data.link, res.external_urls.spotify],
@@ -158,12 +139,12 @@ export const getUrl = async (
       title: null,
       type,
       album: null,
-      preview: null
+      preview: null,
     };
-  } else if (type === LinkType.album) {
+  } else if (type === 'album') {
     const res = await searchAlbum({
       artist: data.artist.name,
-      album: data.title
+      album: data.title,
     });
     return {
       urls: [data.link, res.external_urls.spotify],
@@ -172,7 +153,7 @@ export const getUrl = async (
       title: null,
       type,
       album: data.title,
-      preview: data.tracks ? data.tracks.data[0].preview : null
+      preview: data.tracks ? data.tracks.data[0].preview : null,
     };
   } else {
     return Promise.reject();

@@ -3,13 +3,15 @@
     "target": "esnext",
     "module": "commonjs",
     "allowJs": false,
-    "declaration": false,
-    "declarationMap": false,
-    "outDir": "./dist",
-    "rootDir": "./src",
+    "outDir": "dist",
     "strict": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": false,
-    "esModuleInterop": true
-  }
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "paths": {
+      "common/*": ["../../common/*"]
+    }
+  },
+  "include": ["src"]
 }
