@@ -33,7 +33,7 @@ export const Input: React.FC<InputProps> = ({ onChange, value }) => {
           flex: 1,
           borderRadius: "3rem",
           outline: 0,
-          border: 0,
+          border: '1px solid #f1f1f1',
           fontSize: 2,
           pl: 4,
           boxShadow: "small",
