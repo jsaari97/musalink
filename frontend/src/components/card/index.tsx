@@ -45,7 +45,7 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
               {result.type !== "artist" && (
                 <Heading
                   m="initial"
-                  mb={2}
+                  mb={3}
                   lineHeight={1}
                   textAlign="center"
                   fontSize={5}
@@ -59,6 +59,7 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
                 fontSize={result.title || result.album ? 3 : 5}
                 as={result.title || result.album ? "h2" : "h1"}
                 color="#333"
+                mb={2}
               >
                 {result.artist}
               </Heading>
