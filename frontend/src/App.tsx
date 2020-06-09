@@ -71,9 +71,13 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     setValid(validateInput(value));
+
     const query = qs.stringify({ q: value });
-    const url = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${query}`;
-    window.history.pushState({ path: url }, "", url);
+    const path = `${window.location.protocol}//${window.location.host}${
+      window.location.pathname
+    }${value ? `?${query}` : ""}`;
+
+    window.history.pushState({ path }, "", path);
   }, [value]);
 
   React.useEffect(() => {
@@ -127,9 +131,9 @@ const App: React.FC = () => {
       width={1}
       flexDirection="column"
       alignItems="center"
-      height="100vh"
       py={[32, 120, 240]}
       sx={{
+        minHeight: '100vh',
         background: gradient,
       }}
     >
@@ -145,6 +149,7 @@ const App: React.FC = () => {
                 mt={[5, 0]}
                 mx={[2, 0]}
                 as="form"
+                height={56}
                 onSubmit={onSubmit}
                 flexDirection={["column", "row"]}
               >
@@ -160,7 +165,7 @@ const App: React.FC = () => {
                   }}
                   bg={isValid ? buttonColor : "#aaa"}
                   color={isValid ? "#fff" : "#444"}
-                  py={3}
+                  py={2}
                   px={4}
                   fontWeight={400}
                   type="submit"

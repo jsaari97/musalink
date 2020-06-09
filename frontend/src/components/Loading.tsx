@@ -7,7 +7,7 @@ interface LoadingProps {
 
 export const Loading: React.FC<LoadingProps> = ({
   color = "#aaa",
-  size = 28,
+  size = 24,
 }) => {
   return (
     <svg
