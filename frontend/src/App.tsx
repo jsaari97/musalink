@@ -118,6 +118,10 @@ const App: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const reset = React.useCallback(() => {
+    setResult(null);
+  }, []);
+
   return (
     <Flex
       width={1}
@@ -133,7 +137,7 @@ const App: React.FC = () => {
         {transitions.map(({ item, props, key }) =>
           item ? (
             <animated.div key={key} style={props}>
-              <ResultCard onClose={() => setResult(null)} result={result} />
+              <ResultCard onClose={reset} result={result} />
             </animated.div>
           ) : (
             <animated.div key={key} style={props}>
@@ -164,7 +168,7 @@ const App: React.FC = () => {
                   m="initial"
                   mt={[2, 0]}
                 >
-                  {loading || true ? <Loading color="#fff" /> : "Search"}
+                  {loading ? <Loading color="#fff" /> : "Search"}
                 </Button>
               </Flex>
             </animated.div>
