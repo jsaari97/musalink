@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/musalink/static/js/main.d37d1247.chunk.js",
-    "main.js.map": "/musalink/static/js/main.d37d1247.chunk.js.map",
+    "main.js": "/musalink/static/js/main.ba5d0d94.chunk.js",
+    "main.js.map": "/musalink/static/js/main.ba5d0d94.chunk.js.map",
     "runtime-main.js": "/musalink/static/js/runtime-main.c50f66d9.js",
     "runtime-main.js.map": "/musalink/static/js/runtime-main.c50f66d9.js.map",
-    "static/js/2.fb444282.chunk.js": "/musalink/static/js/2.fb444282.chunk.js",
-    "static/js/2.fb444282.chunk.js.map": "/musalink/static/js/2.fb444282.chunk.js.map",
+    "static/js/2.f6241141.chunk.js": "/musalink/static/js/2.f6241141.chunk.js",
+    "static/js/2.f6241141.chunk.js.map": "/musalink/static/js/2.f6241141.chunk.js.map",
     "index.html": "/musalink/index.html",
-    "precache-manifest.1dbb5ae697858157ae63547f0ebbf393.js": "/musalink/precache-manifest.1dbb5ae697858157ae63547f0ebbf393.js",
+    "precache-manifest.baa2de373d012f14291bcf6f9112efc3.js": "/musalink/precache-manifest.baa2de373d012f14291bcf6f9112efc3.js",
     "service-worker.js": "/musalink/service-worker.js",
-    "static/js/2.fb444282.chunk.js.LICENSE.txt": "/musalink/static/js/2.fb444282.chunk.js.LICENSE.txt",
+    "static/js/2.f6241141.chunk.js.LICENSE.txt": "/musalink/static/js/2.f6241141.chunk.js.LICENSE.txt",
     "static/media/close.f783f129.svg": "/musalink/static/media/close.f783f129.svg",
     "static/media/deezer.7fa87351.svg": "/musalink/static/media/deezer.7fa87351.svg",
     "static/media/pause.1bae49a4.svg": "/musalink/static/media/pause.1bae49a4.svg",
@@ -18,7 +18,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c50f66d9.js",
-    "static/js/2.fb444282.chunk.js",
-    "static/js/main.d37d1247.chunk.js"
+    "static/js/2.f6241141.chunk.js",
+    "static/js/main.ba5d0d94.chunk.js"
   ]
 }

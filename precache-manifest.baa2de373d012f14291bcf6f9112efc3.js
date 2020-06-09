@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0cf54aa4382be6fdba9e7808157826b1",
+    "revision": "335ce56969657ff7ae245e48233c4784",
     "url": "/musalink/index.html"
   },
   {
-    "revision": "e2f9a009674b423a63ec",
-    "url": "/musalink/static/js/2.fb444282.chunk.js"
+    "revision": "db1a9bb58ebb0d9aadeb",
+    "url": "/musalink/static/js/2.f6241141.chunk.js"
   },
   {
-    "revision": "d6e2ee81fb5475724387e4ca643167c8",
-    "url": "/musalink/static/js/2.fb444282.chunk.js.LICENSE.txt"
+    "revision": "47a3933d7bc464bc86de77aeac625e4d",
+    "url": "/musalink/static/js/2.f6241141.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "33411c9f520f7f392527",
-    "url": "/musalink/static/js/main.d37d1247.chunk.js"
+    "revision": "2c5a9efde322f3ebb119",
+    "url": "/musalink/static/js/main.ba5d0d94.chunk.js"
   },
   {
     "revision": "7cb050e92c8c747715ee",
