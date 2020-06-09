@@ -5,16 +5,21 @@ import { ResultCard } from "./components/card";
 import * as qs from "query-string";
 import vibrant from "node-vibrant";
 import { animated, useTransition } from "react-spring";
-import Spinner from "react-md-spinner";
 import { Response } from "common/types";
 import { fetchApi } from "utils/api";
+import { Loading } from "components/Loading";
 
 const validateInput = (input: string): boolean =>
   !!input.match(/(open\.spotify|deezer\.com)/);
 
 const initialQuery = (): string => {
-  const q = qs.parse(window.location.search);
-  return (q && q.q ? q.q : "") as string;
+  const query = qs.parse(window.location.search);
+
+  if (query.q && typeof query.q === "string") {
+    return query.q;
+  }
+
+  return "";
 };
 
 const buildGradient = (color1: number[], color2: number[]): string =>
@@ -142,7 +147,13 @@ const App: React.FC = () => {
                 <Input value={value} onChange={setValue} />
                 <Button
                   disabled={!isValid || loading}
-                  sx={{ borderRadius: 99 }}
+                  sx={{
+                    borderRadius: 99,
+                    boxShadow: "small",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
                   bg={isValid ? buttonColor : "#aaa"}
                   color={isValid ? "#fff" : "#444"}
                   py={3}
@@ -153,11 +164,7 @@ const App: React.FC = () => {
                   m="initial"
                   mt={[2, 0]}
                 >
-                  {loading ? (
-                    <Spinner size={18} singleColor="#fff" />
-                  ) : (
-                    "Submit"
-                  )}
+                  {loading || true ? <Loading color="#fff" /> : "Search"}
                 </Button>
               </Flex>
             </animated.div>

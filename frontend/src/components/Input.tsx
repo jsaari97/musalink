@@ -42,7 +42,7 @@ export const Input: React.FC<InputProps> = ({ onChange, value }) => {
           border: 0,
           fontSize: 2,
           pl: 4,
-          boxShadow: "0 0 4px rgba(0, 0, 0, 0.125)",
+          boxShadow: "small",
           minHeight: 42,
         }}
         value={value}

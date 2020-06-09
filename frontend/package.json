@@ -10,7 +10,6 @@
     "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-md-spinner": "^1.0.0",
     "react-spring": "^8.0.27",
     "rebass": "^4.0.7"
   },

@@ -16,7 +16,7 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
       p={4}
       sx={{
         borderRadius: 24,
-        boxShadow: "small",
+        boxShadow: "large",
         position: "relative",
         zIndex: 2,
         minHeight: 320,

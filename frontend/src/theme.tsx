@@ -17,8 +17,8 @@ export const theme = {
     mono: "Menlo, monospace"
   },
   shadows: {
-    small: "0 2px 12px rgba(0, 0, 0, .125)",
-    large: "0 0 24px rgba(0, 0, 0, .125)"
+    small: "0 8px 12px -8px rgba(0, 0, 0, 0.2)",
+    large: "0 18px 16px -15px rgba(0,0,0,0.3), 0 10px 10px -20px rgba(0,0,0,0.8)"
   },
   buttons: {
     clear: {
