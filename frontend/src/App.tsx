@@ -11,6 +11,7 @@ import { Loading } from "components/Loading";
 import { parseQueryParams } from "utils/query";
 import { validateInput } from "utils/validation";
 import { buildGradient } from "utils/gradient";
+import { Credits } from "components/Credits";
 
 const App: React.FC = () => {
   const [value, setValue] = React.useState<string>(parseQueryParams());
@@ -165,6 +166,7 @@ const App: React.FC = () => {
           )
         )}
       </div>
+      <Credits />
     </Flex>
   );
 };

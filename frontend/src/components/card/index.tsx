@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Response } from "common/types";
-import { Card, Flex, Heading, Box } from "rebass";
+import { Card, Flex, Heading, Box, Button } from "rebass";
 import { MusicLink } from "components/MusicLink";
 import { ReactComponent as CloseIcon } from "svg/close.svg";
 import { CardCover } from "./cover";
@@ -24,13 +24,14 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
       mx={2}
       bg="#fff"
     >
-      <CloseIcon
-        style={{ position: "absolute", top: 12, right: 12 }}
+      <Button
         onClick={onClose}
-        height={32}
-        width={32}
-        fill="#444"
-      />
+        variant="clear"
+        sx={{ position: "absolute", top: 3, right: 3 }}
+        title="Close"
+      >
+        <CloseIcon height={32} width={32} fill="#444" />
+      </Button>
       {result && (
         <Flex flexDirection={["column", "row"]} alignItems="center">
           <CardCover image={result.cover} preview={result.preview} />
