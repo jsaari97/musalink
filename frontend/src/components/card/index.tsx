@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Response } from "common/types";
-import { Card, Flex, Heading, Box, Button } from "rebass";
-import { MusicLink } from "components/MusicLink";
+import { Card, Flex, Heading, Button } from "rebass";
+import { MusicLink } from "./link";
 import { ReactComponent as CloseIcon } from "svg/close.svg";
 import { CardCover } from "./cover";
 
@@ -18,10 +18,11 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
         borderRadius: 24,
         boxShadow: "large",
         position: "relative",
+        border: '1px solid #e1e1e1',
         zIndex: 2,
         minHeight: 320,
       }}
-      mx={2}
+      mx={[3, 2]}
       bg="#fff"
     >
       <Button
@@ -75,11 +76,11 @@ export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
                 </Heading>
               )}
             </Flex>
-            <Box mt={4}>
+            <Flex mt={4}>
               {result.urls.map((link) => (
                 <MusicLink key={link} link={link} />
               ))}
-            </Box>
+            </Flex>
           </Flex>
         </Flex>
       )}

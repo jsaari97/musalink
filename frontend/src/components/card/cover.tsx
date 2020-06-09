@@ -2,6 +2,7 @@ import * as React from "react";
 import { Button, Box, Image } from "rebass";
 import { ReactComponent as PlayIcon } from "svg/play.svg";
 import { ReactComponent as PauseIcon } from "svg/pause.svg";
+import { motion } from "framer-motion";
 
 interface CardCoverProps {
   image: string;
@@ -60,23 +61,27 @@ export const CardCover: React.FC<CardCoverProps> = ({ image, preview }) => {
       variant="clear"
       width={256}
       height={256}
-      style={{ position: "relative" }}
       mb={[24, 0]}
     >
-      {!!preview && (
-        <>
-          <audio ref={audioRef} controls={false} src={preview} />
-          <Box sx={styles.control}>
-            <ControlIcon height={96} width={96} fill="#fff" />
-          </Box>
-        </>
-      )}
-      <Image
-        sx={{ objectFit: "cover", borderRadius: '50%' }}
-        width={256}
-        height={256}
-        src={image}
-      />
+      <motion.div
+        style={{ position: "relative" }}
+        whileTap={{ scale: 0.925 }}
+      >
+        {!!preview && (
+          <>
+            <audio ref={audioRef} controls={false} src={preview} />
+            <Box sx={styles.control}>
+              <ControlIcon height={96} width={96} fill="#fff" />
+            </Box>
+          </>
+        )}
+        <Image
+          sx={{ objectFit: "cover", borderRadius: "50%" }}
+          width={256}
+          height={256}
+          src={image}
+        />
+      </motion.div>
     </Button>
   );
 };

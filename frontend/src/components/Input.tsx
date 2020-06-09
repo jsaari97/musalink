@@ -25,7 +25,7 @@ export const Input: React.FC<InputProps> = ({ onChange, value }) => {
   );
 
   return (
-    <Flex flex={1} mr={[0, 3]}>
+    <Flex flex={1} mr={[0, 3]} mb={[3, 0]}>
       <Box
         as="input"
         type="text"
@@ -35,9 +35,9 @@ export const Input: React.FC<InputProps> = ({ onChange, value }) => {
           outline: 0,
           border: '1px solid #f1f1f1',
           fontSize: 2,
-          pl: 4,
+          pl: [3, 4],
           boxShadow: "small",
-          minHeight: 42,
+          minHeight: 48,
         }}
         value={value}
         onChange={handleChange}

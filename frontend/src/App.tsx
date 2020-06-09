@@ -141,9 +141,9 @@ const App: React.FC = () => {
             >
               <Flex
                 mt={[5, 0]}
-                mx={[2, 0]}
+                mx={[3, 0]}
                 as="form"
-                height={56}
+                height={['auto', 56]}
                 onSubmit={onSubmit}
                 flexDirection={["column", "row"]}
               >
@@ -161,7 +161,8 @@ const App: React.FC = () => {
                   }}
                   bg={buttonColor}
                   color="#fff"
-                  py={2}
+                  py={[3, 2]}
+                  height={[48, 'auto']}
                   px={4}
                   fontWeight={400}
                   type="submit"
