@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Input } from "./components/Input";
 import { Flex, Button } from "rebass";
-import axios from "axios";
 import { ResultCard } from "./components/card";
 import * as qs from "query-string";
 import vibrant from "node-vibrant";
 import { animated, useTransition } from "react-spring";
 import Spinner from "react-md-spinner";
 import { Response } from "common/types";
+import { fetchApi } from "utils/api";
 
 const validateInput = (input: string): boolean =>
   !!input.match(/(open\.spotify|deezer\.com)/);
@@ -21,11 +21,6 @@ const buildGradient = (color1: number[], color2: number[]): string =>
   `linear-gradient(348deg,rgb(${color1.join(",")}) 0%,rgb(${color2.join(
     ","
   )}))`;
-
-const URL =
-  "https://europe-west1-jsaari-open-source.cloudfunctions.net/musalink?url=";
-
-const fetch = (url: string) => axios.get<Response>(`${URL}${url}`);
 
 const App: React.FC = () => {
   const [value, setValue] = React.useState<string>(initialQuery());
@@ -55,17 +50,16 @@ const App: React.FC = () => {
   });
 
   const onSubmit = React.useCallback(
-    async (e) => {
-      e.preventDefault();
-      try {
-        setLoading(true);
-        const { data } = await fetch(value);
-        if (typeof data !== "string") {
-          setResult(data);
-        }
-      } catch (e) {
-        setLoading(false);
-      }
+    (event: React.FormEvent) => {
+      event.preventDefault();
+      setLoading(true);
+
+      fetchApi(value)
+        .then(setResult)
+        .catch(() => {})
+        .finally(() => {
+          setLoading(false);
+        });
     },
     [value]
   );
@@ -89,9 +83,10 @@ const App: React.FC = () => {
         .from(result.cover)
         .getPalette()
         .then((palette) => {
-          setButtonColor(
-            palette.DarkMuted ? palette.DarkMuted.getHex() : "#aaa"
-          );
+          if (palette.DarkVibrant) {
+            setButtonColor(palette.DarkVibrant.getHex());
+          }
+
           setGradient(
             buildGradient(
               palette.Muted ? palette.Muted.getRgb() : [226, 109, 92],
@@ -106,13 +101,16 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     if (validateInput(value)) {
-      fetch(value).then(({ data }) => {
-        if (typeof data !== "string") {
-          setResult(data);
-        }
-      });
+      setLoading(true);
+
+      fetchApi(value)
+        .then(setResult)
+        .catch(() => {})
+        .finally(() => {
+          setLoading(false);
+        });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
