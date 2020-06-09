@@ -1,10 +1,7 @@
-node_modules/
 dist/
 /result.json
-.vscode/
 coverage/
 .DS_Store
-package.zip
 package/
 junit.xml
 .env

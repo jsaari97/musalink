@@ -1,7 +1,8 @@
 import * as utils from './utils';
 import * as spotify from './services/spotify';
 import * as deezer from './services/deezer';
-import { Response as MusaResponse } from 'common/types';
+import { Response as MusaResponse } from 'common/lib/types';
+import { determineService } from 'common/lib/utils';
 import { Request, Response } from 'express';
 
 export const handler = async (req: Request<any, any, any, { url: string }>, res: Response) => {
@@ -12,7 +13,7 @@ export const handler = async (req: Request<any, any, any, { url: string }>, res:
     const { url } = req.query;
     const id = utils.extractId(url);
     const type = utils.determineLinkType(url);
-    const service = utils.determineService(url);
+    const service = determineService(url);
 
     if (id && type && service) {
       const resolve = (result: MusaResponse) => {

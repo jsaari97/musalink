@@ -1,17 +1,11 @@
 import * as React from "react";
 import { Flex, Box } from "rebass";
+import { pruneQueryParams } from "utils/query";
 
 interface InputProps {
   onChange: (value: string) => void;
   value: string;
 }
-
-const pruneQueryParams = (url: string): string => {
-  // Check if string has query params
-  const filtered = url.match(/.+?(\?)/);
-
-  return filtered ? filtered[0].substr(0, filtered[0].length - 1) : url;
-};
 
 export const Input: React.FC<InputProps> = ({ onChange, value }) => {
   const handleChange = React.useCallback(

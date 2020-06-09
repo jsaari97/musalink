@@ -1,7 +1,4 @@
-import { MusicService, LinkType } from 'common/types';
-
-export const determineService = (url: string): MusicService | undefined =>
-  url.match(/open\.spotify/) ? 'spotify' : url.match(/deezer\.com/) ? 'deezer' : undefined;
+import { LinkType } from 'common/types';
 
 export const determineLinkType = (url: string): LinkType | undefined =>
   url.match(/\/track\//)

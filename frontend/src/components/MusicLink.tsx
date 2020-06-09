@@ -1,4 +1,5 @@
 import * as React from "react";
+import { determineService } from "common/lib/utils";
 import { ReactComponent as DeezerIcon } from "svg/deezer.svg";
 import { ReactComponent as SpotifyIcon } from "svg/spotify.svg";
 import { Link } from "rebass";
@@ -7,23 +8,10 @@ interface MusicLinkProps {
   link: string;
 }
 
-const determineType = (link: string): "spotify" | "deezer" | null =>
-  link.match(/open\.spotify/)
-    ? "spotify"
-    : link.match(/deezer\.com/)
-    ? "deezer"
-    : null;
-
-const iconStyle = {
-  height: 64,
-  width: 64,
-  fill: "#333",
-};
-
 export const MusicLink: React.FC<MusicLinkProps> = ({ link }) => {
-  const service = determineType(link);
+  const service = determineService(link);
 
-  const ServiceIcon = React.useMemo((): React.ElementType | null => {
+  const ServiceIcon = React.useMemo((): typeof DeezerIcon | null => {
     switch (service) {
       case "deezer":
         return DeezerIcon;
@@ -46,7 +34,7 @@ export const MusicLink: React.FC<MusicLinkProps> = ({ link }) => {
       target="_blank"
       rel="noreferrer noopener"
     >
-      <ServiceIcon {...iconStyle} />
+      <ServiceIcon height={64} width={64} fill="#444" />
     </Link>
   );
 };

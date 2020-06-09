@@ -8,27 +8,12 @@ import { animated, useTransition } from "react-spring";
 import { Response } from "common/types";
 import { fetchApi } from "utils/api";
 import { Loading } from "components/Loading";
-
-const validateInput = (input: string): boolean =>
-  !!input.match(/(open\.spotify|deezer\.com)/);
-
-const initialQuery = (): string => {
-  const query = qs.parse(window.location.search);
-
-  if (query.q && typeof query.q === "string") {
-    return query.q;
-  }
-
-  return "";
-};
-
-const buildGradient = (color1: number[], color2: number[]): string =>
-  `linear-gradient(348deg,rgb(${color1.join(",")}) 0%,rgb(${color2.join(
-    ","
-  )}))`;
+import { parseQueryParams } from "utils/query";
+import { validateInput } from "utils/validation";
+import { buildGradient } from "utils/gradient";
 
 const App: React.FC = () => {
-  const [value, setValue] = React.useState<string>(initialQuery());
+  const [value, setValue] = React.useState<string>(parseQueryParams());
   const [result, setResult] = React.useState<Response | null>(null);
   const [isValid, setValid] = React.useState<boolean>(validateInput(value));
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -133,7 +118,7 @@ const App: React.FC = () => {
       alignItems="center"
       py={[32, 120, 240]}
       sx={{
-        minHeight: '100vh',
+        minHeight: "100vh",
         background: gradient,
       }}
     >
