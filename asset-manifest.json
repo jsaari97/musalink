@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/musalink/static/js/main.ba5d0d94.chunk.js",
-    "main.js.map": "/musalink/static/js/main.ba5d0d94.chunk.js.map",
-    "runtime-main.js": "/musalink/static/js/runtime-main.c50f66d9.js",
-    "runtime-main.js.map": "/musalink/static/js/runtime-main.c50f66d9.js.map",
-    "static/js/2.f6241141.chunk.js": "/musalink/static/js/2.f6241141.chunk.js",
-    "static/js/2.f6241141.chunk.js.map": "/musalink/static/js/2.f6241141.chunk.js.map",
+    "main.js": "/musalink/static/js/main.0b9cc5cc.chunk.js",
+    "main.js.map": "/musalink/static/js/main.0b9cc5cc.chunk.js.map",
+    "runtime-main.js": "/musalink/static/js/runtime-main.a997bfb3.js",
+    "runtime-main.js.map": "/musalink/static/js/runtime-main.a997bfb3.js.map",
+    "static/js/2.2db789a1.chunk.js": "/musalink/static/js/2.2db789a1.chunk.js",
+    "static/js/2.2db789a1.chunk.js.map": "/musalink/static/js/2.2db789a1.chunk.js.map",
     "index.html": "/musalink/index.html",
-    "precache-manifest.baa2de373d012f14291bcf6f9112efc3.js": "/musalink/precache-manifest.baa2de373d012f14291bcf6f9112efc3.js",
+    "precache-manifest.be4f1a22dd657e80235dafb427a274f0.js": "/musalink/precache-manifest.be4f1a22dd657e80235dafb427a274f0.js",
     "service-worker.js": "/musalink/service-worker.js",
-    "static/js/2.f6241141.chunk.js.LICENSE.txt": "/musalink/static/js/2.f6241141.chunk.js.LICENSE.txt",
+    "static/js/2.2db789a1.chunk.js.LICENSE.txt": "/musalink/static/js/2.2db789a1.chunk.js.LICENSE.txt",
     "static/media/close.f783f129.svg": "/musalink/static/media/close.f783f129.svg",
     "static/media/deezer.7fa87351.svg": "/musalink/static/media/deezer.7fa87351.svg",
     "static/media/pause.1bae49a4.svg": "/musalink/static/media/pause.1bae49a4.svg",
@@ -17,8 +17,8 @@
     "static/media/spotify.3e2ba66d.svg": "/musalink/static/media/spotify.3e2ba66d.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.c50f66d9.js",
-    "static/js/2.f6241141.chunk.js",
-    "static/js/main.ba5d0d94.chunk.js"
+    "static/js/runtime-main.a997bfb3.js",
+    "static/js/2.2db789a1.chunk.js",
+    "static/js/main.0b9cc5cc.chunk.js"
   ]
 }

@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "335ce56969657ff7ae245e48233c4784",
+    "revision": "cd03cb55b258df46b8ae03b6bfccfc02",
     "url": "/musalink/index.html"
   },
   {
-    "revision": "db1a9bb58ebb0d9aadeb",
-    "url": "/musalink/static/js/2.f6241141.chunk.js"
+    "revision": "906586d6abd138f211a1",
+    "url": "/musalink/static/js/2.2db789a1.chunk.js"
   },
   {
     "revision": "47a3933d7bc464bc86de77aeac625e4d",
-    "url": "/musalink/static/js/2.f6241141.chunk.js.LICENSE.txt"
+    "url": "/musalink/static/js/2.2db789a1.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2c5a9efde322f3ebb119",
-    "url": "/musalink/static/js/main.ba5d0d94.chunk.js"
+    "revision": "b9858c7c60c3eb40588d",
+    "url": "/musalink/static/js/main.0b9cc5cc.chunk.js"
   },
   {
-    "revision": "7cb050e92c8c747715ee",
-    "url": "/musalink/static/js/runtime-main.c50f66d9.js"
+    "revision": "de71b182913ad55c6581",
+    "url": "/musalink/static/js/runtime-main.a997bfb3.js"
   },
   {
     "revision": "f783f12921a2cf5aace94a0a0f133107",
