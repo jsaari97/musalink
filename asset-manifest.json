@@ -4,12 +4,12 @@
     "main.js.map": "/musalink/static/js/main.0b9cc5cc.chunk.js.map",
     "runtime-main.js": "/musalink/static/js/runtime-main.a997bfb3.js",
     "runtime-main.js.map": "/musalink/static/js/runtime-main.a997bfb3.js.map",
-    "static/js/2.2db789a1.chunk.js": "/musalink/static/js/2.2db789a1.chunk.js",
-    "static/js/2.2db789a1.chunk.js.map": "/musalink/static/js/2.2db789a1.chunk.js.map",
+    "static/js/2.96629ca4.chunk.js": "/musalink/static/js/2.96629ca4.chunk.js",
+    "static/js/2.96629ca4.chunk.js.map": "/musalink/static/js/2.96629ca4.chunk.js.map",
     "index.html": "/musalink/index.html",
-    "precache-manifest.be4f1a22dd657e80235dafb427a274f0.js": "/musalink/precache-manifest.be4f1a22dd657e80235dafb427a274f0.js",
+    "precache-manifest.85f10b766c03cf380d1c60d7a2e2be9e.js": "/musalink/precache-manifest.85f10b766c03cf380d1c60d7a2e2be9e.js",
     "service-worker.js": "/musalink/service-worker.js",
-    "static/js/2.2db789a1.chunk.js.LICENSE.txt": "/musalink/static/js/2.2db789a1.chunk.js.LICENSE.txt",
+    "static/js/2.96629ca4.chunk.js.LICENSE.txt": "/musalink/static/js/2.96629ca4.chunk.js.LICENSE.txt",
     "static/media/close.f783f129.svg": "/musalink/static/media/close.f783f129.svg",
     "static/media/deezer.7fa87351.svg": "/musalink/static/media/deezer.7fa87351.svg",
     "static/media/pause.1bae49a4.svg": "/musalink/static/media/pause.1bae49a4.svg",
@@ -18,7 +18,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a997bfb3.js",
-    "static/js/2.2db789a1.chunk.js",
+    "static/js/2.96629ca4.chunk.js",
     "static/js/main.0b9cc5cc.chunk.js"
   ]
 }
