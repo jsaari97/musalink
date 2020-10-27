@@ -12,7 +12,7 @@
   "author": "Jim Saari",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^3.9.5"
+    "typescript": "^4.0.5"
   },
   "scripts": {
     "build": "tsc"
