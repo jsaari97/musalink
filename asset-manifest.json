@@ -1,24 +1,22 @@
 {
   "files": {
-    "main.js": "/musalink/static/js/main.0b9cc5cc.chunk.js",
-    "main.js.map": "/musalink/static/js/main.0b9cc5cc.chunk.js.map",
-    "runtime-main.js": "/musalink/static/js/runtime-main.a997bfb3.js",
-    "runtime-main.js.map": "/musalink/static/js/runtime-main.a997bfb3.js.map",
-    "static/js/2.d25d31f3.chunk.js": "/musalink/static/js/2.d25d31f3.chunk.js",
-    "static/js/2.d25d31f3.chunk.js.map": "/musalink/static/js/2.d25d31f3.chunk.js.map",
+    "main.js": "/musalink/static/js/main.32ae40be.chunk.js",
+    "main.js.map": "/musalink/static/js/main.32ae40be.chunk.js.map",
+    "runtime-main.js": "/musalink/static/js/runtime-main.f284e3c9.js",
+    "runtime-main.js.map": "/musalink/static/js/runtime-main.f284e3c9.js.map",
+    "static/js/2.fcd492da.chunk.js": "/musalink/static/js/2.fcd492da.chunk.js",
+    "static/js/2.fcd492da.chunk.js.map": "/musalink/static/js/2.fcd492da.chunk.js.map",
     "index.html": "/musalink/index.html",
-    "precache-manifest.77a1fe002fef82cb1df172c30d8bab14.js": "/musalink/precache-manifest.77a1fe002fef82cb1df172c30d8bab14.js",
-    "service-worker.js": "/musalink/service-worker.js",
-    "static/js/2.d25d31f3.chunk.js.LICENSE.txt": "/musalink/static/js/2.d25d31f3.chunk.js.LICENSE.txt",
-    "static/media/close.f783f129.svg": "/musalink/static/media/close.f783f129.svg",
-    "static/media/deezer.7fa87351.svg": "/musalink/static/media/deezer.7fa87351.svg",
-    "static/media/pause.1bae49a4.svg": "/musalink/static/media/pause.1bae49a4.svg",
-    "static/media/play.4b2e91e8.svg": "/musalink/static/media/play.4b2e91e8.svg",
-    "static/media/spotify.3e2ba66d.svg": "/musalink/static/media/spotify.3e2ba66d.svg"
+    "static/js/2.fcd492da.chunk.js.LICENSE.txt": "/musalink/static/js/2.fcd492da.chunk.js.LICENSE.txt",
+    "static/media/close.ed3e90c9.svg": "/musalink/static/media/close.ed3e90c9.svg",
+    "static/media/deezer.8bc649a1.svg": "/musalink/static/media/deezer.8bc649a1.svg",
+    "static/media/pause.bec5d277.svg": "/musalink/static/media/pause.bec5d277.svg",
+    "static/media/play.26dabf92.svg": "/musalink/static/media/play.26dabf92.svg",
+    "static/media/spotify.3b06b7e6.svg": "/musalink/static/media/spotify.3b06b7e6.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.a997bfb3.js",
-    "static/js/2.d25d31f3.chunk.js",
-    "static/js/main.0b9cc5cc.chunk.js"
+    "static/js/runtime-main.f284e3c9.js",
+    "static/js/2.fcd492da.chunk.js",
+    "static/js/main.32ae40be.chunk.js"
   ]
 }
