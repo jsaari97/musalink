@@ -3467,8 +3467,7 @@ common-tags@^1.8.0:
   integrity sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw==
 
 "common@link:../common":
-  version "0.0.0"
-  uid ""
+  version "1.0.0"
 
 commondir@^1.0.1:
   version "1.0.1"
