@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Response } from "common/types";
-import { Card, Flex, Heading, Button } from "rebass";
 import { MusicLink } from "./link";
 import { ReactComponent as CloseIcon } from "svg/close.svg";
 import { CardCover } from "./cover";
@@ -12,78 +11,41 @@ interface ResultProps {
 
 export const ResultCard: React.FC<ResultProps> = ({ result, onClose }) => {
   return (
-    <Card
-      p={4}
-      sx={{
-        borderRadius: 24,
-        boxShadow: "large",
-        position: "relative",
-        border: '1px solid #e1e1e1',
-        zIndex: 2,
-        minHeight: 320,
-      }}
-      mx={[3, 2]}
-      bg="#fff"
-    >
-      <Button
+    <div className="relative p-8 shadow-lg border border-gray-200 rounded-lg z-10 bg-white mx-4 md:mx-0">
+      <button
         onClick={onClose}
-        variant="clear"
-        sx={{ position: "absolute", top: 3, right: 3 }}
+        className="absolute top-3 right-3"
         title="Close"
       >
         <CloseIcon height={32} width={32} fill="#444" />
-      </Button>
+      </button>
       {result && (
-        <Flex flexDirection={["column", "row"]} alignItems="center">
+        <div className="flex flex-col md:flex-row items-center">
           <CardCover image={result.cover} preview={result.preview} />
-          <Flex
-            flex={1}
-            justifyContent="space-around"
-            flexDirection="column"
-            alignItems="center"
-          >
-            <Flex flexDirection="column" alignItems="center">
+          <div className="flex flex-col flex-auto justify-around items-center">
+            <div className="flex flex-col items-center mb-6">
               {result.type !== "artist" && (
-                <Heading
-                  m="initial"
-                  mb={3}
-                  lineHeight={1}
-                  textAlign="center"
-                  fontSize={5}
-                  as="h1"
-                >
+                <h1 className="text-3xl font-bold text-center mb-2">
                   {result.title || result.album}
-                </Heading>
+                </h1>
               )}
-              <Heading
-                textAlign="center"
-                fontSize={result.title || result.album ? 3 : 5}
-                as={result.title || result.album ? "h2" : "h1"}
-                color="#333"
-                mb={2}
-              >
+              <h2 className="text-xl font-semibold text-center mb-1 text-gray-700">
                 {result.artist}
-              </Heading>
+              </h2>
               {result.type === "track" && (
-                <Heading
-                  textAlign="center"
-                  color="#666"
-                  fontWeight={500}
-                  fontSize={2}
-                  as="h3"
-                >
+                <h3 className="text-lg font-medium text-center text-gray-500">
                   {result.album}
-                </Heading>
+                </h3>
               )}
-            </Flex>
-            <Flex mt={4}>
+            </div>
+            <div className="flex">
               {result.urls.map((link) => (
                 <MusicLink key={link} link={link} />
               ))}
-            </Flex>
-          </Flex>
-        </Flex>
+            </div>
+          </div>
+        </div>
       )}
-    </Card>
+    </div>
   );
 };

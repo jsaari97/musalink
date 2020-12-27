@@ -2,7 +2,6 @@ import * as React from "react";
 import { determineService } from "common/lib/utils";
 import { ReactComponent as DeezerIcon } from "svg/deezer.svg";
 import { ReactComponent as SpotifyIcon } from "svg/spotify.svg";
-import { Link } from "rebass";
 import { motion } from "framer-motion";
 
 interface MusicLinkProps {
@@ -28,8 +27,8 @@ export const MusicLink: React.FC<MusicLinkProps> = ({ link }) => {
   }
 
   return (
-    <Link
-      mx={2}
+    <a
+      className="mx-2"
       href={link}
       title={`Listen on ${service}`}
       target="_blank"
@@ -38,6 +37,6 @@ export const MusicLink: React.FC<MusicLinkProps> = ({ link }) => {
       <motion.div whileTap={{ scale: 0.8 }} whileHover={{ scale: 1.125 }}>
         <ServiceIcon height={64} width={64} fill="#444" />
       </motion.div>
-    </Link>
+    </a>
   );
 };

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Flex, Box } from "rebass";
 import { pruneQueryParams } from "utils/query";
 
 interface InputProps {
@@ -25,25 +24,15 @@ export const Input: React.FC<InputProps> = ({ onChange, value }) => {
   );
 
   return (
-    <Flex flex={1} mr={[0, 3]} mb={[3, 0]}>
-      <Box
-        as="input"
+    <div className="flex flex-auto md:mr-3 mb-3 md:mb-0">
+      <input
         type="text"
-        sx={{
-          flex: 1,
-          borderRadius: "3rem",
-          outline: 0,
-          border: '1px solid #f1f1f1',
-          fontSize: 2,
-          pl: [3, 4],
-          boxShadow: "small",
-          minHeight: 48,
-        }}
+        className="flex-auto outline-none rounded-full border border-gray-100 bg-white text-md shadow-md pl-4 md:pl-6 py-3 md:py-0"
         value={value}
         onChange={handleChange}
         onFocus={handleFocus}
         placeholder="Paste track, album or artist link"
       />
-    </Flex>
+    </div>
   );
 };

@@ -1,2 +1,4 @@
 # production
 /build
+.eslintcache
+.DS_Store
