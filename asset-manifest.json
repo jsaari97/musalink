@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/musalink/static/css/main.f4c2db49.chunk.css",
+    "main.css": "/musalink/static/css/main.05ebd514.chunk.css",
     "main.js": "/musalink/static/js/main.157b3b52.chunk.js",
     "main.js.map": "/musalink/static/js/main.157b3b52.chunk.js.map",
     "runtime-main.js": "/musalink/static/js/runtime-main.4e0ea487.js",
     "runtime-main.js.map": "/musalink/static/js/runtime-main.4e0ea487.js.map",
-    "static/js/2.6752b947.chunk.js": "/musalink/static/js/2.6752b947.chunk.js",
-    "static/js/2.6752b947.chunk.js.map": "/musalink/static/js/2.6752b947.chunk.js.map",
+    "static/js/2.6d5d218c.chunk.js": "/musalink/static/js/2.6d5d218c.chunk.js",
+    "static/js/2.6d5d218c.chunk.js.map": "/musalink/static/js/2.6d5d218c.chunk.js.map",
     "index.html": "/musalink/index.html",
-    "static/css/main.f4c2db49.chunk.css.map": "/musalink/static/css/main.f4c2db49.chunk.css.map",
-    "static/js/2.6752b947.chunk.js.LICENSE.txt": "/musalink/static/js/2.6752b947.chunk.js.LICENSE.txt",
+    "static/css/main.05ebd514.chunk.css.map": "/musalink/static/css/main.05ebd514.chunk.css.map",
+    "static/js/2.6d5d218c.chunk.js.LICENSE.txt": "/musalink/static/js/2.6d5d218c.chunk.js.LICENSE.txt",
     "static/media/close.ed3e90c9.svg": "/musalink/static/media/close.ed3e90c9.svg",
     "static/media/deezer.8bc649a1.svg": "/musalink/static/media/deezer.8bc649a1.svg",
     "static/media/pause.bec5d277.svg": "/musalink/static/media/pause.bec5d277.svg",
@@ -18,8 +18,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.4e0ea487.js",
-    "static/js/2.6752b947.chunk.js",
-    "static/css/main.f4c2db49.chunk.css",
+    "static/js/2.6d5d218c.chunk.js",
+    "static/css/main.05ebd514.chunk.css",
     "static/js/main.157b3b52.chunk.js"
   ]
 }
