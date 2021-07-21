@@ -16,17 +16,17 @@
   },
   "devDependencies": {
     "@types/express": "^4.16.1",
-    "@types/node": "^14.14.5",
+    "@types/node": "^16.4.0",
     "common": "link:../common",
     "cross-env": "^7.0.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
-    "ts-node": "^9.0.0",
+    "ts-node": "^10.1.0",
     "typescript": "^4.0.5"
   },
   "dependencies": {
     "axios": "^0.21.0",
-    "dotenv": "^8.0.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "query-string": "^7.0.0"
   }

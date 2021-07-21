@@ -36,7 +36,7 @@
     "@craco/craco": "^6.0.0",
     "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat",
     "@types/jest": "^26.0.0",
-    "@types/node": "^14.0.5",
+    "@types/node": "^16.4.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "autoprefixer": "^9",
