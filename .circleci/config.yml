@@ -8,11 +8,11 @@ deploy_branches: &deploy_branches
 executors:
   backend:
     docker:
-      - image: circleci/node:10.18.1
+      - image: circleci/node:16
     working_directory: ~/project/backend
   frontend:
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:16
     working_directory: ~/project/frontend
 
 jobs:
@@ -75,7 +75,7 @@ jobs:
             gcloud functions deploy musalink \
               --region ${GCLOUD_REGION} \
               --entry-point handler \
-              --runtime nodejs10 \
+              --runtime nodejs16 \
               --verbosity info \
               --memory 128MB \
               --trigger-http \
