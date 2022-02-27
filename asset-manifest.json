@@ -1,25 +1,18 @@
 {
   "files": {
-    "main.css": "/musalink/static/css/main.07f56b1d.chunk.css",
-    "main.js": "/musalink/static/js/main.ca88b77c.chunk.js",
-    "main.js.map": "/musalink/static/js/main.ca88b77c.chunk.js.map",
-    "runtime-main.js": "/musalink/static/js/runtime-main.2dba4429.js",
-    "runtime-main.js.map": "/musalink/static/js/runtime-main.2dba4429.js.map",
-    "static/js/2.d4329a47.chunk.js": "/musalink/static/js/2.d4329a47.chunk.js",
-    "static/js/2.d4329a47.chunk.js.map": "/musalink/static/js/2.d4329a47.chunk.js.map",
+    "main.css": "/musalink/static/css/main.8ba9223d.css",
+    "main.js": "/musalink/static/js/main.5cda8734.js",
+    "static/media/deezer.svg": "/musalink/static/media/deezer.8bc649a1505ccc94aa91837035abf02e.svg",
+    "static/media/spotify.svg": "/musalink/static/media/spotify.3b06b7e6fe807e7bed4ed95dfa6d07e1.svg",
     "index.html": "/musalink/index.html",
-    "static/css/main.07f56b1d.chunk.css.map": "/musalink/static/css/main.07f56b1d.chunk.css.map",
-    "static/js/2.d4329a47.chunk.js.LICENSE.txt": "/musalink/static/js/2.d4329a47.chunk.js.LICENSE.txt",
-    "static/media/close.ed3e90c9.svg": "/musalink/static/media/close.ed3e90c9.svg",
-    "static/media/deezer.8bc649a1.svg": "/musalink/static/media/deezer.8bc649a1.svg",
-    "static/media/pause.bec5d277.svg": "/musalink/static/media/pause.bec5d277.svg",
-    "static/media/play.26dabf92.svg": "/musalink/static/media/play.26dabf92.svg",
-    "static/media/spotify.3b06b7e6.svg": "/musalink/static/media/spotify.3b06b7e6.svg"
+    "static/media/play.svg": "/musalink/static/media/play.26dabf92c331c45d9acb76cf55ee6533.svg",
+    "static/media/close.svg": "/musalink/static/media/close.ed3e90c983915095361a4ce183142da6.svg",
+    "static/media/pause.svg": "/musalink/static/media/pause.bec5d2772a7b8fc4dceaf7ce87274893.svg",
+    "main.8ba9223d.css.map": "/musalink/static/css/main.8ba9223d.css.map",
+    "main.5cda8734.js.map": "/musalink/static/js/main.5cda8734.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.2dba4429.js",
-    "static/js/2.d4329a47.chunk.js",
-    "static/css/main.07f56b1d.chunk.css",
-    "static/js/main.ca88b77c.chunk.js"
+    "static/css/main.8ba9223d.css",
+    "static/js/main.5cda8734.js"
   ]
 }
