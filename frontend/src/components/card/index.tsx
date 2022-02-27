@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Response } from "common/types";
+import { Response } from "musalink-common/types";
 import { MusicLink } from "./link";
 import { ReactComponent as CloseIcon } from "svg/close.svg";
 import { CardCover } from "./cover";

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import got from 'got';
 import { SearchParameters, LinkType, Response } from 'common/types';
 import {
   DeezerSearchResponse,
@@ -15,7 +15,7 @@ const API_URL = 'https://api.deezer.com/';
 
 export const fetch = async (id: string, type: LinkType): Promise<DeezerTrack> => {
   try {
-    const { data } = await axios.get<DeezerTrackExtended>(`${API_URL}${type}/${id}`);
+    const data = await got.get(`${API_URL}${type}/${id}`).json<DeezerTrackExtended>();
 
     return Promise.resolve(data);
   } catch (e) {
@@ -30,12 +30,15 @@ export const buildSearchQuery = (params: SearchParameters): string =>
 
 export const search = async <T>(params: SearchParameters, type: LinkType): Promise<T> => {
   try {
-    const { data: response } = await axios.get<DeezerSearchResponse<T>>(
-      `${API_URL}search/${type}?${qs.stringify({
-        q: buildSearchQuery(params),
-        limit: 1,
-      })}`
-    );
+    const response = await got
+      .get(
+        `${API_URL}search/${type}?${qs.stringify({
+          q: buildSearchQuery(params),
+          limit: 1,
+        })}`
+      )
+      .json<DeezerSearchResponse<T>>();
+
     return response.total ? response.data[0] : Promise.reject();
   } catch (e) {
     throw new Error('search was unsuccessful');

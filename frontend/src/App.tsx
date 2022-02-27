@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Input } from "./components/Input";
 import { ResultCard } from "./components/card";
-import { Response } from "common/types";
+import { Response } from "musalink-common/types";
 import { fetchApi } from "utils/api";
 import { Loading } from "components/Loading";
 import { parseQueryParams } from "utils/query";

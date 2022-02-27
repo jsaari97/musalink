@@ -1,4 +1,4 @@
-import axios from 'axios';
+import got from 'got';
 import { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } from '../../config';
 import {
   SpotifyTrackResponse,
@@ -32,16 +32,16 @@ export const authorize = async (): Promise<string | undefined> => {
     const token = `${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`;
     const encodedToken = Buffer.from(token).toString('base64');
 
-    const { data } = await axios.post<SpotifyAuthResponse>(
-      AUTH_URL,
-      'grant_type=client_credentials',
-      {
+    const data = await got
+      .post(AUTH_URL, {
+        search: 'grant_type=client_credentials',
         headers: {
           Authorization: `Basic ${encodedToken}`,
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-      }
-    );
+        responseType: 'json',
+      })
+      .json<SpotifyAuthResponse>();
 
     authToken = `Bearer ${data.access_token}`;
 
@@ -58,11 +58,13 @@ export const authorize = async (): Promise<string | undefined> => {
 export const fetch = async (id: string, type: LinkType): Promise<SpotifyTrackResponse> => {
   try {
     const token = await authorize();
-    const { data } = await axios.get<SpotifyTrackResponse>(`${API_URL}${type}s/${id}`, {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const data = await got
+      .get(`${API_URL}${type}s/${id}`, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .json<SpotifyTrackResponse>();
 
     return Promise.resolve(data);
   } catch (e) {
@@ -78,18 +80,20 @@ export const buildSearchQuery = (params: SearchParameters): string =>
 export const search = async <T>(params: SearchParameters, type: LinkType): Promise<T> => {
   try {
     const token = await authorize();
-    const { data: response } = await axios.get<SpotifySearchResponse<T>>(
-      `${API_URL}search?${qs.stringify({
-        q: buildSearchQuery(params),
-        type,
-        limit: 1,
-      })}`,
-      {
-        headers: {
-          Authorization: token,
-        },
-      }
-    );
+    const response = await got
+      .get(
+        `${API_URL}search?${qs.stringify({
+          q: buildSearchQuery(params),
+          type,
+          limit: 1,
+        })}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      )
+      .json<SpotifySearchResponse<T>>();
 
     return type === 'track'
       ? response.tracks.items[0]

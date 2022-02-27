@@ -1,5 +1,5 @@
 import * as qs from "query-string";
-import { Response } from "common/types";
+import { Response } from "musalink-common/types";
 
 const { REACT_APP_API_URL: API_URL } = process.env;
 

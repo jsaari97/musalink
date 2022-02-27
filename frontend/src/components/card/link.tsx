@@ -1,5 +1,5 @@
 import * as React from "react";
-import { determineService } from "common/lib/utils";
+import { determineService } from "musalink-common/utils";
 import { ReactComponent as DeezerIcon } from "svg/deezer.svg";
 import { ReactComponent as SpotifyIcon } from "svg/spotify.svg";
 import { motion } from "framer-motion";
