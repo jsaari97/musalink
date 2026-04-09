@@ -5,3 +5,4 @@ coverage/
 package/
 junit.xml
 .env
+.wrangler/

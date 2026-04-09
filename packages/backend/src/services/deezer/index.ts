@@ -1,5 +1,4 @@
-import got from 'got';
-import { SearchParameters, LinkType, Response } from 'common/types';
+import { SearchParameters, LinkType, Response } from 'musalink-common/types';
 import {
   DeezerSearchResponse,
   DeezerSearchTrackData,
@@ -9,13 +8,20 @@ import {
   DeezerTrackExtended,
 } from './types';
 import { SpotifyTrackResponse } from '../spotify/types';
-import * as qs from 'query-string';
 
 const API_URL = 'https://api.deezer.com/';
 
+const fetchJson = async <T>(url: string): Promise<T> => {
+  const response = await globalThis.fetch(url);
+  if (!response.ok) {
+    throw new Error(`Request failed with status ${response.status}`);
+  }
+  return (await response.json()) as T;
+};
+
 export const fetch = async (id: string, type: LinkType): Promise<DeezerTrack> => {
   try {
-    const data = await got.get(`${API_URL}${type}/${id}`).json<DeezerTrackExtended>();
+    const data = await fetchJson<DeezerTrackExtended>(`${API_URL}${type}/${id}`);
 
     return Promise.resolve(data);
   } catch (e) {
@@ -30,14 +36,14 @@ export const buildSearchQuery = (params: SearchParameters): string =>
 
 export const search = async <T>(params: SearchParameters, type: LinkType): Promise<T> => {
   try {
-    const response = await got
-      .get(
-        `${API_URL}search/${type}?${qs.stringify({
-          q: buildSearchQuery(params),
-          limit: 1,
-        })}`
-      )
-      .json<DeezerSearchResponse<T>>();
+    const searchParams = new URLSearchParams({
+      q: buildSearchQuery(params),
+      limit: '1',
+    });
+
+    const response = await fetchJson<DeezerSearchResponse<T>>(
+      `${API_URL}search/${type}?${searchParams}`
+    );
 
     return response.total ? response.data[0] : Promise.reject();
   } catch (e) {

@@ -1,4 +1,4 @@
-import { LinkType } from 'common/types';
+import { LinkType } from 'musalink-common/types';
 
 export const determineLinkType = (url: string): LinkType | undefined =>
   url.match(/\/track\//)

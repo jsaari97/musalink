@@ -1,0 +1,26 @@
+{
+  "name": "musalink-backend",
+  "version": "1.0.0",
+  "description": "Convert music streaming link to other service",
+  "main": "index.js",
+  "author": "Jim Saari",
+  "license": "MIT",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "echo \"No tests available\" && exit 0",
+    "build": "tsc -p tsconfig.json --noEmit",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src --ext .ts",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260405.0",
+    "@types/node": "^24.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "^5.6.3",
+    "wrangler": "^4.11.0"
+  },
+  "dependencies": {
+    "musalink-common": "*"
+  }
+}
