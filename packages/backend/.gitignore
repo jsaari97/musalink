@@ -6,3 +6,4 @@ package/
 junit.xml
 .env
 .wrangler/
+.dev.vars
