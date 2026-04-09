@@ -1,7 +1,7 @@
 import * as React from "react";
 import { determineService } from "musalink-common/utils";
-import { ReactComponent as DeezerIcon } from "svg/deezer.svg";
-import { ReactComponent as SpotifyIcon } from "svg/spotify.svg";
+import DeezerIcon from "svg/deezer.svg?react";
+import SpotifyIcon from "svg/spotify.svg?react";
 import { motion } from "framer-motion";
 
 interface MusicLinkProps {

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { ReactComponent as PlayIcon } from "svg/play.svg";
-import { ReactComponent as PauseIcon } from "svg/pause.svg";
+import PlayIcon from "svg/play.svg?react";
+import PauseIcon from "svg/pause.svg?react";
 import { motion } from "framer-motion";
 
 interface CardCoverProps {

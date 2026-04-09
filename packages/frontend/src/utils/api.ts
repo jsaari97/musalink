@@ -1,13 +1,12 @@
-import * as qs from "query-string";
 import { Response } from "musalink-common/types";
 
-const { REACT_APP_API_URL: API_URL } = process.env;
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const fetchApi = async (url: string): Promise<Response> => {
   try {
-    const params = qs.stringify({ url });
+    const params = new URLSearchParams({ url });
 
-    const res = await fetch(`${API_URL}?${params}`);
+    const res = await fetch(`${API_URL}?${params.toString()}`);
 
     if (res.status !== 200) {
       return Promise.reject();

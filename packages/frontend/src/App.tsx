@@ -1,6 +1,5 @@
 import * as React from "react";
-import * as qs from "query-string";
-import vibrant from "node-vibrant";
+import { Palette } from "auto-palette";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Input } from "./components/Input";
@@ -13,12 +12,25 @@ import { validateInput } from "utils/validation";
 import { buildGradient } from "utils/gradient";
 import { Credits } from "components/Credits";
 
+const DEFAULT_BUTTON_COLOR = "#5d13d4";
+const DEFAULT_GRADIENT_START = [226, 109, 92];
+const DEFAULT_GRADIENT_END = [84, 46, 113];
+
+const toRgbTuple = (swatch: ReturnType<Palette["findSwatches"]>[number] | undefined): number[] | null => {
+  if (!swatch) {
+    return null;
+  }
+
+  const { r, g, b } = swatch.color.toRGB();
+  return [r, g, b];
+};
+
 const App: React.FC = () => {
   const [value, setValue] = React.useState<string>(parseQueryParams());
   const [result, setResult] = React.useState<Response | null>(null);
   const [isValid, setValid] = React.useState<boolean>(validateInput(value));
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [buttonColor, setButtonColor] = React.useState<string>("#5d13d4");
+  const [buttonColor, setButtonColor] = React.useState<string>(DEFAULT_BUTTON_COLOR);
   const [gradient, setGradient] = React.useState<string>(
     buildGradient([240, 240, 240], [250, 250, 250])
   );
@@ -41,10 +53,13 @@ const App: React.FC = () => {
   React.useEffect(() => {
     setValid(validateInput(value));
 
-    const query = qs.stringify({ q: value });
-    const path = `${window.location.protocol}//${window.location.host}${
-      window.location.pathname
-    }${value ? `?${query}` : ""}`;
+    const nextUrl = new URL(window.location.href);
+    if (value) {
+      nextUrl.searchParams.set("q", value);
+    } else {
+      nextUrl.searchParams.delete("q");
+    }
+    const path = nextUrl.toString();
 
     window.history.pushState({ path }, "", path);
   }, [value]);
@@ -57,23 +72,50 @@ const App: React.FC = () => {
         result.type !== "artist" ? ` - ${result.title || result.album}` : ""
       }`;
 
-      vibrant
-        .from(result.cover)
-        .getPalette()
-        .then((palette) => {
-          if (palette.DarkVibrant) {
-            setButtonColor(palette.DarkVibrant.getHex());
-          }
+      let cancelled = false;
+      const coverImage = new Image();
+      coverImage.crossOrigin = "anonymous";
 
-          setGradient(
-            buildGradient(
-              palette.Muted ? palette.Muted.getRgb() : [226, 109, 92],
-              palette.LightVibrant
-                ? palette.LightVibrant.getRgb()
-                : [84, 46, 113]
-            )
-          );
-        });
+      const applyFallbackPalette = () => {
+        setButtonColor(DEFAULT_BUTTON_COLOR);
+        setGradient(buildGradient(DEFAULT_GRADIENT_START, DEFAULT_GRADIENT_END));
+      };
+
+      coverImage.onload = () => {
+        if (cancelled) {
+          return;
+        }
+
+        try {
+          const palette = Palette.extract(coverImage);
+          const darkSwatch = palette.findSwatches(1, "dark")[0];
+          const mutedSwatch = palette.findSwatches(1, "muted")[0];
+          const lightSwatch = palette.findSwatches(1, "light")[0];
+          const mutedRgb = toRgbTuple(mutedSwatch) ?? DEFAULT_GRADIENT_START;
+          const lightRgb = toRgbTuple(lightSwatch) ?? DEFAULT_GRADIENT_END;
+
+          setButtonColor(darkSwatch ? darkSwatch.color.toString() : DEFAULT_BUTTON_COLOR);
+          setGradient(buildGradient(mutedRgb, lightRgb));
+        } catch {
+          applyFallbackPalette();
+        }
+      };
+
+      coverImage.onerror = () => {
+        if (cancelled) {
+          return;
+        }
+
+        applyFallbackPalette();
+      };
+
+      coverImage.src = result.cover;
+
+      return () => {
+        cancelled = true;
+        coverImage.onload = null;
+        coverImage.onerror = null;
+      };
     }
   }, [result]);
 

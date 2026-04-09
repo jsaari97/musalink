@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Response } from "musalink-common/types";
 import { MusicLink } from "./link";
-import { ReactComponent as CloseIcon } from "svg/close.svg";
+import CloseIcon from "svg/close.svg?react";
 import { CardCover } from "./cover";
 
 interface ResultProps {
