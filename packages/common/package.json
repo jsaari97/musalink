@@ -1,0 +1,27 @@
+{
+  "name": "musalink-common",
+  "version": "1.0.0",
+  "description": "Musalink Common libs",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./types": "./lib/types.js",
+    "./utils": "./lib/utils.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "author": "Jim Saari",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.8.1",
+    "typescript": "^5.6.3"
+  },
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput",
+    "build": "tsc",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --ext .ts"
+  }
+}
