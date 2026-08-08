@@ -42,8 +42,8 @@ export const CardCover: React.FC<CardCoverProps> = ({ image, preview }) => {
       disabled={!preview}
       onClick={handlePreviewPress}
       className="w-64 h-64 flex-shrink-0 relative focus:outline-none mb-6 md:mb-0"
-      whileTap={{ scale: 0.85 }}
-      whileHover={{ scale: 1.025 }}
+      whileTap={{ scale: 0.9875 }}
+      whileHover={{ scale: 1.0125 }}
     >
       {!!preview && (
         <>

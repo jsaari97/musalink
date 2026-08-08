@@ -152,7 +152,7 @@ const App: React.FC = () => {
         />
       </AnimatePresence>
       <div className="max-w-2xl w-full z-20">
-        <AnimatePresence initial={false} exitBeforeEnter={true}>
+        <AnimatePresence initial={false} mode="wait">
           {result ? (
             <motion.div
               key="card"

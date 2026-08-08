@@ -1,3 +1,5 @@
+/// <reference types="vitest/config" />
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { fileURLToPath, URL } from "node:url";
@@ -11,11 +13,11 @@ export default defineConfig({
       components: fileURLToPath(new URL("./src/components", import.meta.url)),
       "musalink-common": fileURLToPath(new URL("../common", import.meta.url)),
       utils: fileURLToPath(new URL("./src/utils", import.meta.url)),
-      svg: fileURLToPath(new URL("./src/svg", import.meta.url))
-    }
+      svg: fileURLToPath(new URL("./src/svg", import.meta.url)),
+    },
   },
   test: {
     environment: "jsdom",
-    passWithNoTests: true
-  }
+    passWithNoTests: true,
+  },
 });

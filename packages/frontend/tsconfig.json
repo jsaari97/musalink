@@ -11,6 +11,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "paths": {
+      "components/*": ["./src/components/*"],
+      "svg/*": ["./src/svg/*"],
+      "utils/*": ["./src/utils/*"]
+    },
     "types": ["vite/client", "vitest/globals"]
   },
   "include": ["src", "vite.config.ts"]
