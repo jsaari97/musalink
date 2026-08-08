@@ -26,10 +26,12 @@ const toRgbTuple = (swatch: ReturnType<Palette["findSwatches"]>[number] | undefi
 };
 
 const App: React.FC = () => {
-  const [value, setValue] = React.useState<string>(parseQueryParams());
+  const [value, setValue] = React.useState<string>(() => parseQueryParams());
   const [result, setResult] = React.useState<Response | null>(null);
-  const [isValid, setValid] = React.useState<boolean>(validateInput(value));
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const isValid = validateInput(value);
+  const [loading, setLoading] = React.useState<boolean>(() =>
+    validateInput(parseQueryParams())
+  );
   const [buttonColor, setButtonColor] = React.useState<string>(DEFAULT_BUTTON_COLOR);
   const [gradient, setGradient] = React.useState<string>(
     buildGradient([240, 240, 240], [250, 250, 250])
@@ -51,8 +53,6 @@ const App: React.FC = () => {
   );
 
   React.useEffect(() => {
-    setValid(validateInput(value));
-
     const nextUrl = new URL(window.location.href);
     if (value) {
       nextUrl.searchParams.set("q", value);
@@ -66,8 +66,6 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     if (result) {
-      setLoading(false);
-
       window.document.title = `${result.artist}${
         result.type !== "artist" ? ` - ${result.title || result.album}` : ""
       }`;
@@ -121,8 +119,6 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     if (validateInput(value)) {
-      setLoading(true);
-
       fetchApi(value)
         .then(setResult)
         .catch(() => {})
